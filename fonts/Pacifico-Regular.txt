@@ -1,0 +1,8 @@
+Download the Pacifico cursive font (free, open source) from Google Fonts:
+
+https://github.com/google/fonts/raw/main/ofl/pacifico/Pacifico-Regular.ttf
+
+1. Download the file above.
+2. Save it as Pacifico-Regular.ttf in the fonts/ folder in your project.
+
+Once the file is in place, the code will use it for your flashcards.

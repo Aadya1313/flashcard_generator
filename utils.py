@@ -22,7 +22,7 @@ def create_flashcard(text, output_path):
     # Use a cursive TTF font if available, fallback to default
     font_path = "fonts/Pacifico-Regular.ttf"
     try:
-        font = ImageFont.truetype(font_path, size=36)
+        font = ImageFont.truetype(font_path, size=22)
     except Exception:
         font = ImageFont.load_default()
     margin = 40
@@ -44,7 +44,7 @@ def create_flashcard(text, output_path):
     for group in bullet_groups:
         bullet_text = ' '.join(group)
         bullet_sentence = '\u2022 ' + bullet_text
-        wrapped = textwrap.wrap(bullet_sentence, width=60)
+        wrapped = textwrap.wrap(bullet_sentence, width=45)
         for wrap_line in wrapped:
             # Center align: calculate text width and set x accordingly
             bbox = draw.textbbox((0, 0), wrap_line, font=font)

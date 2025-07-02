@@ -6,9 +6,11 @@ import re
 OUTPUT_DIR = "images/output_flashcards/"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-st.title("Web Flashcard Generator")
 
-topic = st.text_input("Enter a Wikipedia topic:")
+st.title("FACTZY - Facts made Easy")
+st.markdown("<span style='font-size:18px;'>Your effortless flashcard companion — turns complex web content into bite-sized flashcards — making smart revision easy, fast, and fun.</span>", unsafe_allow_html=True)
+
+topic = st.text_input("Enter a topic:")
 
 if st.button("Generate Flashcards") and topic.strip():
     with st.spinner("Fetching and generating flashcards..."):
@@ -29,4 +31,4 @@ if st.button("Generate Flashcards") and topic.strip():
                 if chunk:
                     flashcard_path = os.path.join(OUTPUT_DIR, f"{subject}_flashcard_{i+1}_from_web.png")
                     create_flashcard(chunk, flashcard_path)
-                    st.image(flashcard_path, caption=f"Flashcard {i+1}", use_column_width=True)
+                    st.image(flashcard_path, caption=f"Flashcard {i+1}", use_container_width=True)

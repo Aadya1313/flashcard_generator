@@ -19,8 +19,12 @@ def create_flashcard(text, output_path):
     width, height = 800, 400
     flashcard = Image.new('RGB', (width, height), color='white')
     draw = ImageDraw.Draw(flashcard)
-    # Try to use a TTF font for better appearance
-    font = ImageFont.load_default()
+    # Use a cursive TTF font if available, fallback to default
+    font_path = "fonts/Pacifico-Regular.ttf"
+    try:
+        font = ImageFont.truetype(font_path, size=36)
+    except Exception:
+        font = ImageFont.load_default()
     margin = 40
     offset = 40
     line_spacing = 8

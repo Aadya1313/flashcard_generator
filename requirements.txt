@@ -4,5 +4,5 @@ beautifulsoup4
 pillow
 easyocr
 pytesseract
-opencv-python
+opencv-python-headless
 transformers

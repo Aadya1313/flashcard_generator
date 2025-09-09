@@ -3,7 +3,13 @@ from bs4 import BeautifulSoup
 def fetch_wikipedia_intro(topic):
     """Fetch the introductory paragraphs from Wikipedia for a given topic."""
     url = f"https://en.wikipedia.org/wiki/{topic.replace(' ', '_')}"
-    resp = requests.get(url)
+    print(f"[DEBUG] Fetching URL: {url}")
+    try:
+        resp = requests.get(url, timeout=10)
+        print(f"[DEBUG] Status code: {resp.status_code}")
+    except Exception as e:
+        print(f"[ERROR] Exception during request: {e}")
+        return ""
     if resp.status_code != 200:
         print(f"[ERROR] Could not fetch Wikipedia page for topic: {topic}")
         return ""

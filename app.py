@@ -23,9 +23,9 @@ if st.button("Generate Flashcards") and topic.strip():
             cleaned_text = re.sub(r'\[\d+\]', '', cleaned_text)
             subject = classify_subject_gpt(cleaned_text)
             sentences = re.split(r'(?<=[.!?]) +', cleaned_text.strip())
-            n = max(3, min(5, len(sentences)))
-            chunk_size = max(1, len(sentences) // n)
-            flashcard_chunks = [" ".join(sentences[i*chunk_size:(i+1)*chunk_size]).strip() for i in range(n)]
+            flashcard_chunks = [chunk.strip() for chunk in sentences if chunk.strip()]
+            if not flashcard_chunks:
+                flashcard_chunks = [cleaned_text.strip()]
             st.subheader("Flashcards")
             for i, chunk in enumerate(flashcard_chunks):
                 if chunk:

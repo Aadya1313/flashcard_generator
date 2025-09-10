@@ -1,27 +1,12 @@
-import requests
-from bs4 import BeautifulSoup
+import wikipedia
 def fetch_wikipedia_intro(topic):
-    """Fetch the introductory paragraphs from Wikipedia for a given topic."""
-    url = f"https://en.wikipedia.org/wiki/{topic.replace(' ', '_')}"
-    print(f"[DEBUG] Fetching URL: {url}")
+    """Fetch the introductory summary from Wikipedia for a given topic using the wikipedia package."""
     try:
-        resp = requests.get(url, timeout=10)
-        print(f"[DEBUG] Status code: {resp.status_code}")
+        summary = wikipedia.summary(topic, sentences=5)
+        return summary
     except Exception as e:
-        print(f"[ERROR] Exception during request: {e}")
+        print(f"[ERROR] Wikipedia API error: {e}")
         return ""
-    if resp.status_code != 200:
-        print(f"[ERROR] Could not fetch Wikipedia page for topic: {topic}")
-        return ""
-    soup = BeautifulSoup(resp.text, "html.parser")
-    paragraphs = soup.select("p")
-    text = ""
-    for p in paragraphs:
-        if len(p.text.strip()) > 50:
-            text += p.text.strip() + " "
-        if len(text.split()) > 300:  # limit to first ~300 words
-            break
-    return text
 import os
 import easyocr
 import pytesseract

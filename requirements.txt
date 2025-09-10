@@ -6,3 +6,4 @@ easyocr
 pytesseract
 opencv-python-headless
 transformers
+ wikipedia

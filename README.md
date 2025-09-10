@@ -14,9 +14,10 @@ Styled flashcards with Python Imaging Library (PIL) to include fonts, layout, an
 
 <img width="1022" height="797" alt="Screenshot 2025-09-10 112143" src="https://github.com/user-attachments/assets/adcc68b5-2283-4569-b74d-44ef29a54b51" />
 
-![Uploading Screenshot 2025-09-10 112417.png…]()
+<img width="1242" height="781" alt="Screenshot 2025-09-10 112417" src="https://github.com/user-attachments/assets/6ba310ef-e127-4865-8846-d2b9a111beec" />
 
 Explored future support for OCR-based input using Tesseract and EasyOCR.
  Deployed link-https://ceg735bge3zkwznspkztw6.streamlit.app/
+
 
 

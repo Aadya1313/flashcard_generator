@@ -1,12 +1,18 @@
 import wikipedia
 def fetch_wikipedia_intro(topic):
-    """Fetch the introductory summary from Wikipedia for a given topic using the wikipedia package."""
+    """Fetch the introductory summary from Wikipedia for a given topic using the wikipedia package, with detailed error handling."""
     try:
         summary = wikipedia.summary(topic, sentences=5)
         return summary
+    except wikipedia.DisambiguationError as e:
+        print(f"[ERROR] Disambiguation: {e.options}")
+        return f"Topic is ambiguous. Try one of: {', '.join(e.options[:5])}"
+    except wikipedia.PageError:
+        print("[ERROR] Page not found.")
+        return "No Wikipedia page found for this topic."
     except Exception as e:
-        print(f"[ERROR] Wikipedia API error: {e}")
-        return ""
+        print(f"[ERROR] General error: {e}")
+        return f"Error: {e}"
 import os
 import easyocr
 import pytesseract
